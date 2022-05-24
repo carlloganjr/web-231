@@ -1,0 +1,39 @@
+/* 
+    Title: site.css
+    Author: Carl Logan
+    Date: 5/23/2022
+    Description: Styling for the index.html file.
+*/
+
+/* The font style for the entire page is set with alternatives. */
+body {
+    font-family: "Oswald", Verdana, Arial, sans-serif;
+}
+
+.container {
+    margin: 50px 100px 0 100px;
+}
+
+h1, h2, h3, h4 {
+    background-color: #3C275A;
+    color: white;
+    border: 1px solid #D6A800;
+    padding: 10px;
+}
+
+/* Set link color and style. */
+a {
+    color: #453674;
+    text-decoration: none;
+}
+
+/* Set link color and background in hover state. */
+a:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+}
+
+/* Set link color in visited state. */
+a:visited {
+    color: #3C275A;
+}
