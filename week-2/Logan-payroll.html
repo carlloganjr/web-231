@@ -1,0 +1,95 @@
+<!--
+    Title: Logan-payroll.html
+    Author: Carl Logan
+    Date: 5/30/2022
+    Description: Exercise 2 - Hello JavaScript. Learning to use javascript in
+                 an HTML file with event listeners.     
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../site.css">
+    <link rel="stylesheet" type="text/css" href="../global.css">
+    <link rel="stylesheet" type="text/css" href="Logan-payroll.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="payroll-header">Payroll System</h1>
+      <h3>Employee record 1</h3>
+      <ul>
+        <li id="txtFirstNameLudwig"></li>
+        <li id="txtLastNameBeethoven"></li>
+        <li id="txtAddressLudwig"></li>
+        <li id="txtHireDateLudwig"></li>
+        <li id="txtPayRateLudwig"></li>
+      </ul>
+      <h3>Employee record 2</h3>
+      <ul>
+        <li id="txtFirstNameMax"></li>
+        <li id="txtLastNameSmith"></li>
+        <li id="txtAddressMax"></li>
+        <li id="txtHireDateMax"></li>
+        <li id="txtPayRateMax"></li>
+      </ul>
+      <h3>Employee record 3</h3>
+      <ul>
+        <li id="txtFirstNameBud"></li>
+        <li id="txtLastNameThomas"></li>
+        <li id="txtAddressBud"></li>
+        <li id="txtHireDateBud"></li>
+        <li id="txtPayRateBud"></li>
+      </ul>
+      <a class="return-home" href="../index.html">Return</a>
+    </div>
+
+    <script>
+      // Today's date formatted as XX/XX/XXXX
+      const today = new Date().toLocaleDateString("en-US", "numeric"); 
+      // Object for "Employee record 1"
+      const employee1 = {
+              txtFirstNameLudwig: "Ludwig", 
+              txtLastNameBeethoven: "Beethoven", 
+              txtAddressLudwig: "505 Main Street",
+              txtHireDateLudwig: today, 
+              txtPayRateLudwig: 18.914.toFixed(1)
+            };
+      // Object for "Employee record 2"
+      const employee2 = {
+              txtFirstNameMax: "Max", 
+              txtLastNameSmith: "Smith", 
+              txtAddressMax: "512 Main Street",
+              txtHireDateMax: today, 
+              txtPayRateMax: 25.54.toFixed(1)
+            };
+      // Object for "Employee record 3"
+      const employee3 = {
+              txtFirstNameBud: "Bud", 
+              txtLastNameThomas: "Thomas", 
+              txtAddressBud: "600 Main Street",
+              txtHireDateBud: today, 
+              txtPayRateBud: 50.123.toFixed(1)
+            }; 
+    
+      /* 
+        This function takes the employee object and modifies the list
+        item element to include the value for each corresponding key.
+      */
+      function listEmployee(employee) {
+        for(const [key, value] of Object.entries(employee)) {
+          document.getElementById(`${key}`).innerHTML = value;
+        };
+      }
+
+      // call this function to populate under ordered list for employee 1
+      listEmployee(employee1);
+      // call this function to populate under ordered list for employee 2
+      listEmployee(employee2);
+      // call this function to populate under ordered list for employee 3
+      listEmployee(employee3);
+    </script>
+  </body>
+</html>

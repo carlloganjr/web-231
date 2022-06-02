@@ -1,0 +1,43 @@
+<!--
+    Title: Logan-exercise2.html
+    Author: Carl Logan
+    Date: 5/30/2022
+    Description: Exercise 2 - Hello JavaScript. Learning to use javascript in
+                 an HTML file with event listeners.     
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+  </head>
+  <body>
+    <!-- The assignment title for WEB 231 week-2 -->
+    <h1>Exercise 2.2 - Hello JavaScript</h1>
+    <!-- Button used to initiate the event for the alert -->
+    <button id="btnMyCourse">What course am I taking?</button>
+    <!-- This paragraph will have inner text modified using JavaScript -->
+    <p id="txtMyWorld"></p>
+    <!-- This link will return to the course landing page -->
+    <a class="return-home" href="../index.html">Return</a>
+
+    <!-- Include all JavaScript for this exercise within the following 
+        script tags 
+    -->
+    <script>
+      // Variable txtMyWorld will capture the paragraph element for use
+      const txtMyWorld = document.getElementById('txtMyWorld');
+      // Variable btnMyCourse will capture the button element for use
+      const btnMyCourse = document.getElementById('btnMyCourse');
+      // Variable studentLastName holds the last name of a student
+      const studentLastName = "Logan";
+      
+      // Modify the text inside of the p element with the 'txtMyWorld' id
+      txtMyWorld.innerHTML = `You are now in ${studentLastName}\'s world!`;
+      // When button.btnMyCourse is clicked an alert is triggered
+      btnMyCourse.addEventListener("click", function() {
+      alert("WEB 231 – Enterprise JavaScript I")
+      });
+    </script>
+  </body>
+</html>

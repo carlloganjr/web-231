@@ -10,8 +10,10 @@ body {
     font-family: "Oswald", Verdana, Arial, sans-serif;
 }
 
-.container {
-    margin: 50px 100px 0 100px;
+#container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 h1, h2, h3, h4 {

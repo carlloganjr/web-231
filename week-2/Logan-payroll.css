@@ -1,0 +1,11 @@
+/* 
+    Title: Logan-payroll.css
+    Author: Carl Logan
+    Date: 5/30/2022
+    Description: Styling for the Logan-payroll.html file.
+*/
+
+/* styling for each employee record */
+ul {
+  border: 1px dotted red;
+}

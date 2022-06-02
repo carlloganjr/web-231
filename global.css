@@ -1,6 +1,13 @@
+/* 
+    Title: global.css
+    Author: Carl Logan
+    Date: 5/23/2022
+    Description: Standard CSS styling to be used for assignments.
+*/
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3;
+    transition: box-shadow 0.3s;
     width: 50%;
 }
 
@@ -61,4 +68,18 @@
 
 .form-field {
     padding: 20px;
+}
+
+.return-home {
+    color: #4F3674;
+    text-decoration: none;
+}
+
+.return-home:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+}
+
+.return-home:visited {
+    color: #3C275A;
 }
