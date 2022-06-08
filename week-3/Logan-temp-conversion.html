@@ -1,0 +1,69 @@
+<!--
+    Title: Logan-temp-conversion.html
+    Author: Carl Logan
+    Date: 6/6/2022
+    Description: HTML and script for temp conversion app.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>WEB 231 – Enterprise JavaScript I</title>
+        <link rel="stylesheet" type="text/css" href="../global.css">
+        <link rel="stylesheet" type="text/css" href="Logan--temp-conversion.css">        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+   <body>
+     <div id="container">
+       <h1 class="app-header">Welcome to the Temperature Conversion App!</h1>
+       <!-- container to hold the form inputs -->
+       <div class="card">
+         <!-- Title for the card -->
+         <div class="card-title">
+          Fahrenheit to Celsius Converter
+         </div>
+         <!-- Content container for the card -->
+         <div class="card-content">
+           <!-- Container for the form -->
+          <div class="form">
+            <!-- Form field containing a text input to capture user values -->
+            <div class="form-field">
+              <label for="txtFahrenheit">Fahrenheit value:</label>
+              <input type="text" id="txtFahrenheit" 
+              name="txtFahrenheit" class="input">
+            </div>
+            <!-- Form field containing a button to trigger an event -->
+            <div class="form-field">
+              <button class="btn btn-primary full-width" id="btnConversion">
+                Convert Temperature
+              </button>
+            </div>
+          </div>
+        </div>
+       </div>
+       <!-- This card will contain the results from the input #txtFahrenheit -->
+       <div class="card">
+        <div class="card-title">
+          Conversion Results
+         </div>
+         <!-- Results will be shown here -->
+         <div class="card-content" id="convertedTemp"></div>
+       </div>
+        <!-- This link will return to the course landing page -->
+        <a class="return-home" href="../index.html">Return</a>
+     </div>
+     <!-- JavaScript for the input and button  -->
+     <script>
+       // onclick event to trigger the arrow function
+       document.getElementById("btnConversion").onclick = () => {
+         // capture the value from the input
+        const fahrenheit = document.getElementById("txtFahrenheit").value;
+        // convert the fahrenheit value
+        let convertedTemp = ((parseFloat(fahrenheit) - 32) / 1.8).toFixed(2);
+        // modify the #convertedTemp under Conversion Results 
+        document.getElementById("convertedTemp").innerHTML = convertedTemp;
+       }
+     </script>
+   </body>
+</html>

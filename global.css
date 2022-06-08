@@ -5,10 +5,29 @@
     Description: Standard CSS styling to be used for assignments.
 */
 
+body {
+    margin: 0;
+    font-family: "Oswald", Verdana, Arial, sans-serif;
+}
+
+header {
+    background-color: #3c275a;
+    color: white;
+    padding: 1px;
+    text-align: center;
+}
+
+#container {
+    padding: 10px;
+}
+
+h1 {
+    font-weight: 400;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s;
-    width: 50%;
 }
 
 .card-title {
@@ -68,6 +87,11 @@
 
 .form-field {
     padding: 20px;
+}
+
+.form-results {
+    width: 600px;
+    margin: 3% auto 0;
 }
 
 .return-home {

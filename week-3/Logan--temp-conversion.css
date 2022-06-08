@@ -1,0 +1,26 @@
+/* 
+    Title: Logan-temp-conversion.css
+    Author: Carl Logan
+    Date: 6/6/2022
+    Description: CSS styling for Logan-temp-conversion.html.
+*/
+
+/* Center the header text */
+.app-header {
+  text-align: center;
+}
+
+/* Center the converted text and increase font size */
+#convertedTemp {
+  text-align: center;
+  font-size: 28px;
+}
+
+#container {
+  width: 800px;
+  margin: auto;
+}
+
+.card, .form {
+  margin: 3% auto 0;
+}
