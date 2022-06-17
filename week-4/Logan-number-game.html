@@ -1,0 +1,96 @@
+<!--
+    Title: Logan-number-game.html
+    Author: Carl Logan
+    Date: 6/13/2022
+    Description: Assignment 4.2 - Number Guessing Game     
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+    <link rel="stylesheet" type="text/css" href="Logan-number-game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to the numbers game!</h1>
+      <!-- container to hold the form inputs -->
+      <div class="card">
+        <!-- Title for the card -->
+        <div class="card-title">
+          Pick a number between 1 and 10
+        </div>
+        <!-- Content container for the card -->
+        <div class="card-content">
+          <!-- Container for the form -->
+         <div class="form">
+           <!-- Form field containing a text input to capture user values -->
+           <div class="form-field">
+             <label for="txtMyNumber">Guess the number:</label>
+             <input type="text" id="txtMyNumber" 
+             name="txtMyNumber" class="input">
+           </div>
+           <!-- Form field containing a button to trigger an event -->
+           <div class="form-field">
+             <button class="btn btn-primary full-width" id="btnSubmit">
+              Submit
+             </button>
+           </div>
+         </div>
+       </div>
+      </div>
+      <!-- This card will contain the results from the input #txtFahrenheit -->
+      <div class="card">
+       <div class="card-title">
+         Results
+        </div>
+        <!-- Results will be shown here -->
+        <div class="card-content" id="result"></div>
+      </div>
+       <!-- This link will return to the course landing page -->
+       <a class="return-home" href="../index.html">Return</a>
+    </div>
+    <script>
+      //generate a random number between 1 and 10
+      const rnd = Math.floor((Math.random() * 10) + 1);
+      // grab the container for the result
+      const result = document.getElementById("result");
+
+      // onclick event to trigger the arrow function
+      document.getElementById("btnSubmit").onclick = () => {
+        // capture the user input
+        let myNumber = document.getElementById("txtMyNumber").value;
+        /* 
+          determine if the user input is number between 1 and 10.
+          if the number is less than 0 or greater than 10, ask the
+          user to pick another number
+        */
+        if(myNumber <= 0 || myNumber >= 11) {
+          result.innerHTML = "Please pick a number between 1 and 10";
+        }
+        // determine if the user input is less than the random number
+        else if (myNumber > rnd) {
+          result.innerHTML = `The number is less than ${myNumber}`;
+        }
+        // determine if the user input is greater than the random number
+        else if (myNumber < rnd) {
+          result.innerHTML = `The number is greater than ${myNumber}`;
+        }
+        // determine if the user input is equal to the random number
+        else if (myNumber == rnd) {
+          result.innerHTML = "Congratulations! You picked the correct number!";
+        }
+        /* 
+          if the user input is anything other than a number, ask the user
+          to pick another number
+        */
+        else {
+          result.innerHTML = "Please pick a number between 1 and 10";
+        }
+      }
+    </script>
+  </body>
+</html>
