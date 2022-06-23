@@ -1,0 +1,110 @@
+<!--
+    Title: Logan-sequence-game.html
+    Author: Carl Logan
+    Date: 6/20/2022
+    Description: Assignment 5.2 - Sequence Game     
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+    <link rel="stylesheet" type="text/css" href="Logan-sequence-game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to the sequence game!</h1>
+      <!-- container to hold the form inputs -->
+      <div class="card">
+        <!-- Title for the card -->
+        <div class="card-title">
+          Sequence Selection Form
+        </div>
+        <!-- Content container for the card -->
+        <div class="card-content">
+          <!-- Container for the form -->
+         <div class="form">
+           <!-- Form field containing a text input to capture user values -->
+           <div class="form-field">
+             <label for="txtMyNumber">Choose a number sequence:</label>
+             <!-- Drop down menu with options to be selected by the user -->
+             <select id="sequenceSelect" 
+             name="sequenceSelect" class="drop-down-menu">
+             <option value="select">--Select--</option>
+             <option value="fibonacci">Fibonacci Sequence</option>
+             <option value="even">Even Numbers</option>
+             <option value="odd">Odd Numbers</option>
+            </select>
+           </div>
+           <!-- Form field containing a button to trigger an event -->
+           <div class="form-field">
+             <button class="btn btn-primary full-width" id="btnDisplaySequence">
+              Display Sequence
+             </button>
+           </div>
+         </div>
+       </div>
+      </div>
+      <!-- This card will contain the results from the select input -->
+      <div class="card">
+       <div class="card-title">
+         Sequence Results
+        </div>
+        <!-- Results will be shown here -->
+        <div class="card-content" id="result"></div>
+      </div>
+       <!-- This link will return to the course landing page -->
+       <a class="return-home" href="../index.html">Return</a>
+    </div>
+    <script>
+      // capture the value selected from the drop down menu
+      const choice = document.getElementById("sequenceSelect");
+      let sequenceResult = document.getElementById("result");
+      // onclick event to trigger the arrow function
+      document.getElementById("btnDisplaySequence").onclick = () => {
+        // for the fibonacci option compute the sequence up to 40
+        if(choice.value === "fibonacci") {
+          let [fibonacciSequenceText, num1, num2, next] = 
+              ['', 0, 1, 0];
+          while(num1 < 40) {
+            // add num1 to a variable
+            fibonacciSequenceText += `${num1}` + ", ";
+            // update next, num1, and num2 for the following iteration
+            next = num1 + num2;
+            num1 = num2;
+            num2 = next;
+          }
+          // display the sequence in the results container
+          sequenceResult.innerHTML = fibonacciSequenceText.slice(0,-2);
+        }
+        // for the even selection compute the sequence up to 20
+        else if(choice.value === "even") {
+          let [evenNumbers, even] = ["", 2];
+          while(even < 20) {
+            evenNumbers += `${even}` + ", ";
+            even += 2;
+          }
+          // display the sequence in the results container
+          sequenceResult.innerHTML = evenNumbers.slice(0, -2);
+        }
+        // for the odd selection compute the sequence up to 20
+        else if(choice.value === "odd") {
+          let [oddNumbers, odd] = ["", 1];
+          while(odd < 20) {
+            oddNumbers += `${odd}` + ", ";
+            odd += 2;
+          }
+          // display the sequence in the results container
+          sequenceResult.innerHTML = oddNumbers.slice(0, -2);
+        }
+        else {
+          alert("Invalid selection, please try again!");
+        }
+      }
+
+    </script>
+  </body>
+</html>
