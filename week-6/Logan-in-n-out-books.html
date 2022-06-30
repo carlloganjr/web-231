@@ -1,0 +1,157 @@
+<!--
+    Title: Logan-in-n-out-books.html
+    Author: Carl Logan
+    Date: 6/28/2022
+    Description: Assignment 6.2 - In-N-Out-Books     
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+    <link rel="stylesheet" type="text/css" href="Logan-in-n-out-books.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to In-N-Out-Books</h1>
+      <!-- container to hold the form inputs -->
+      <div class="card">
+        <!-- Title for the card -->
+        <div class="card-title">
+          My Favorites
+        </div>
+        <!-- Content container for the card -->
+        <div class="card-content">
+          <!-- Container for the form -->
+         <div class="form">
+           <!-- Form field containing a text input to capture user values -->
+           <div class="form-field">
+             <label for="favoriteList">Choose a listing:</label>
+             <!-- Drop down menu with options to be selected by the user -->
+             <select id="favoriteList" 
+             name="favoriteList" class="drop-down-menu">
+             <option value="select">--Select--</option>
+             <option value="books">Top 3 Favorite Books</option>
+             <option value="authors">Top 3 Favorite Authors</option>
+            </select>
+           </div>
+           <!-- Form field containing a button to trigger an event -->
+           <div class="form-field">
+             <button class="btn btn-primary full-width" id="btnDisplayListing">
+              Display Listing
+             </button>
+           </div>
+         </div>
+       </div>
+      </div>
+
+      <!-- This card will contain the results for Top 3 Favorite Books -->
+      <div id="favorite-books">
+        <div class="card-title">
+            Top 3 Favorite Books
+        </div>
+        <div class="card-content">
+            <table id="books">
+                <thead>
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Title</th>
+                        <th>Pages</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBooks"></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- This card will contain the results for Top 3 Favorite Authors -->
+      <div id="favorite-authors">
+        <div class="card-title">
+            Top 3 Favorite Authors
+        </div>
+        <div class="card-content">
+            <table id="authors">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Genre</th>
+                    </tr>
+                </thead>
+                <tbody id="tableAuthors"></tbody>
+            </table>
+        </div>
+      </div>
+
+      <div id="message" class="card">
+        <div class="card-title">
+          Please make a selection.
+      </div>
+      </div>
+
+       <!-- This link will return to the course landing page -->
+       <a class="return-home" href="../index.html">Return</a>
+    </div>
+    <script>
+      const DUNE = {isbn: "044100590X", title: "Dune", pages: "528"};
+      const EMPYRION = {isbn: "0310205093", title: "Empyrion", pages: "480"};
+      const EMPRISE = {isbn: "1612424546", title: "Emprise", pages: "358"};
+
+      const CARD = {name: "Orson Scott Card", genre: "Science Fiction"};
+      const HERBERT = {name: "Frank Herbert", genre: "Science Fiction"};
+      const LAWHEAD = {name: "Stephen R. Lawhead", genre: "Fantasy"};
+
+      let books = document.getElementById("favorite-books");
+      let authors = document.getElementById("favorite-authors");
+      let select = document.getElementById("message");
+
+      books.style.display = "none";
+      authors.style.display = "none";
+      select.style.display = "none";
+
+      const choice = document.getElementById("favoriteList");
+      let sequenceResult = document.getElementById("result");
+      const tableBooks = document.getElementById("tableBooks");
+      const tableAuthors = document.getElementById("tableAuthors");
+
+      function bookDisplay(book) {
+        tableBooks.innerHTML += "<tr><td>" + book.isbn + "</td><td>" + 
+        book.title + "</td><td>" + book.pages + "</td></tr>";
+      }
+
+      function authorDisplay(author) {
+        tableAuthors.innerHTML += "<tr><td>" + author.name + "</td><td>" 
+        + author.genre + "</td></tr>";
+      }
+
+      bookDisplay(DUNE);
+      bookDisplay(EMPYRION);
+      bookDisplay(EMPRISE);
+
+      authorDisplay(CARD);
+      authorDisplay(HERBERT);
+      authorDisplay(LAWHEAD); 
+
+      // onclick event to trigger the arrow function
+      document.getElementById("btnDisplayListing").onclick = () => {
+        if(choice.value == "books") {
+          select.style.display = "none";
+          authors.style.display = "none";
+          books.style.display = "block";
+        }
+        else if(choice.value == "authors") {
+          select.style.display = "none";
+          books.style.display = "none";
+          authors.style.display = "block";          
+        }
+        else {
+          books.style.display = "none";
+          authors.style.display = "none";
+          select.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>

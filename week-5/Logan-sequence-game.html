@@ -1,27 +1,27 @@
 <!--
-    Title: Logan-sequence-game.html
+    Title: Logan-in-n-out-books.html
     Author: Carl Logan
-    Date: 6/20/2022
-    Description: Assignment 5.2 - Sequence Game     
+    Date: 6/28/2022
+    Description: Assignment 6.2 - In-N-Out-Books    
 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>WEB 231 – Enterprise JavaScript I</title>
     <link rel="stylesheet" type="text/css" href="../global.css">
-    <link rel="stylesheet" type="text/css" href="Logan-sequence-game.css">
+    <link rel="stylesheet" type="text/css" href="Logan-in-n-out-books.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="container">
-      <h1 class="app-header">Welcome to the sequence game!</h1>
+      <h1 class="app-header">Welcome to In-N-Out-Books</h1>
       <!-- container to hold the form inputs -->
       <div class="card">
         <!-- Title for the card -->
         <div class="card-title">
-          Sequence Selection Form
+          My Favorites
         </div>
         <!-- Content container for the card -->
         <div class="card-content">
@@ -29,20 +29,19 @@
          <div class="form">
            <!-- Form field containing a text input to capture user values -->
            <div class="form-field">
-             <label for="sequenceSelect">Choose a number sequence:</label>
+             <label for="sequenceSelect">Choose a listing:</label>
              <!-- Drop down menu with options to be selected by the user -->
              <select id="sequenceSelect" 
-             name="sequenceSelect" class="drop-down-menu">
+             name="favoriteList" class="drop-down-menu">
              <option value="select">--Select--</option>
-             <option value="fibonacci">Fibonacci Sequence</option>
-             <option value="even">Even Numbers</option>
-             <option value="odd">Odd Numbers</option>
+             <option value="books">Top 3 Favorite Books</option>
+             <option value="authors">Top 3 Favorite Authors</option>
             </select>
            </div>
            <!-- Form field containing a button to trigger an event -->
            <div class="form-field">
-             <button class="btn btn-primary full-width" id="btnDisplaySequence">
-              Display Sequence
+             <button class="btn btn-primary full-width" id="btnDisplayListing">
+              Display Listing
              </button>
            </div>
          </div>
@@ -51,7 +50,7 @@
       <!-- This card will contain the results from the select input -->
       <div class="card">
        <div class="card-title">
-         Sequence Results
+         Listings
         </div>
         <!-- Results will be shown here -->
         <div class="card-content" id="result"></div>
