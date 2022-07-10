@@ -1,0 +1,59 @@
+/* 
+    Title: Logan-javazon.css
+    Author: Carl Logan
+    Date: 7/9/2022
+    Description: CSS styling for Logan-javazon.html.
+*/
+
+/* Center the header text */
+.app-header {
+  text-align: center;
+}
+
+/* Center the converted text and increase font size */
+#result {
+  text-align: center;
+  font-size: 28px;
+}
+
+#container {
+  width: 800px;
+  margin: auto;
+}
+
+.card, .form, #favorite-books, #favorite-authors {
+  margin: 3% auto 0;
+}
+
+#books, #authors {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+#books th, #authors th {
+  padding: 12px 0;
+  text-align: left;
+  background-color: #4F3674;
+  color: white;
+}
+
+#books td, #books th, #authors td, #authors th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:hover {
+  background-color: #D6A800;
+  color: #4F3674;
+  cursor: pointer;
+}
+
+#favorite-books, #favorite-authors {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3;
+}
+
+#favorite-books:hover, #favorite-authors:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}

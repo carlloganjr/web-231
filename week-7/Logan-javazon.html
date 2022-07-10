@@ -1,0 +1,257 @@
+<!--
+    Title: Logan-javazon.html
+    Author: Carl Logan
+    Date: 7/9/2022
+    Description: Assignment 7.2 - Javazon   
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+    <link rel="stylesheet" type="text/css" href="Logan-javazon.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to the Javazon App!</h1>
+      <!-- container to hold the form inputs -->
+      <div class="card">
+        <!-- Title for the card -->
+        <div class="card-title">
+          Javazon Selection Form
+        </div>
+        <!-- Content container for the card -->
+        <div class="card-content">
+          <!-- Container for the form -->
+         <div class="form">
+           <!-- Form field containing a text input to capture user values -->
+           <div class="form-field">
+             <label for="javazonList">Choose a listing:</label>
+             <!-- Drop down menu with options to be selected by the user -->
+             <select id="javazonList" 
+             name="javazonList" class="drop-down-menu">
+             <option value="select">--Select--</option>
+             <option value="products">Products</option>
+             <option value="services">Services</option>
+             <option value="employees">Employees</option>
+            </select>
+           </div>
+           <!-- Form field containing a button to trigger an event -->
+           <div class="form-field">
+             <button class="btn btn-primary full-width" id="btnDisplayListing">
+              Display Listing
+             </button>
+           </div>
+         </div>
+       </div>
+      </div>
+      <!-- This link will return to the course landing page -->
+      <a class="return-home" href="../index.html">Return</a>
+
+      <!-- This card will contain the results for Javazon Products -->
+      <div id="products">
+        <div class="card-title">
+            Javazon Products
+        </div>
+        <div class="card-content">
+            <table id="books">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total Value</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable"></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- This card will contain the results for Javazon Services -->
+      <div id="services">
+        <div class="card-title">
+          Javazon Services
+        </div>
+        <div class="card-content">
+            <table id="authors">
+                <thead>
+                    <tr>
+                        <th>Service ID</th>
+                        <th>Description</th>
+                        <th>Hourly Rate</th>
+                        <th>Minimum Billable Hours</th>
+                    </tr>
+                </thead>
+                <tbody id="servicesTable"></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- This card will contain the results for Javazon Employees -->
+      <div id="employees">
+        <div class="card-title">
+          Javazon Employees
+        </div>
+        <div class="card-content">
+            <table id="authors">
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTable"></tbody>
+            </table>
+        </div>
+      </div>
+
+      <!-- This card will display a message for all other selections -->
+      <div id="message" class="card">
+        <div class="card-title">
+          Please make a selection.
+      </div>
+    </div>
+    <script>
+      // Use this class to create additional Product objects
+      class Product {
+        constructor(id, description, price, quantity) {
+          this.id = id;
+          this.description = description;
+          this.price = price;
+          this.quantity = quantity;
+          this.totalValue = (this.price * this.quantity).toFixed(2);
+        }
+
+        tableDisplay(element) {
+          element.innerHTML += "<tr><td>" + this.id + "</td><td>" + 
+          this.description + "</td><td>" + this.price + "</td><td>" +
+          this.quantity + "</td><td>" + this.totalValue + "</td></tr>";
+        }
+      }
+
+      // Use this class to create additional Services objects
+      class Services {
+        constructor(id, description, hourlyRate, min) {
+          this.id = id;
+          this.description = description;
+          this.hourlyRate = (hourlyRate).toFixed(2);
+          this.min = min;
+        }
+
+        tableDisplay(element) {
+          element.innerHTML += "<tr><td>" + this.id + "</td><td>" + 
+          this.description + "</td><td>" + this.hourlyRate + "</td><td>" +
+          this.min + "</td></tr>";
+        }
+      }
+
+      // Use this class to create additional Employee objects
+      class Employee {
+        constructor(id, firstName, lastName, salary) {
+          this.id = id;
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.salary = (salary).toFixed(2);
+        }
+
+        tableDisplay(element) {
+          element.innerHTML += "<tr><td>" + this.id + "</td><td>" + 
+          this.lastName + "</td><td>" + this.firstName + "</td><td>" +
+          this.salary + "</td></tr>";
+        }
+      }
+
+      // new objects using the Product class
+      const cookBook = new Product(9780002789010, "Cook Good Food", 19.98, 3);
+      const game = new Product(9780002787512, "Star Shooter", 79.98, 1);
+      const plantStand = new Product(9780002945231, "Plant Stand", 29.49, 2);
+      const cards = new Product(9780002777890, "Baseball Cards", 0.99, 22);
+      const paper = new Product(9780002789111, "Craft Paper", 1.57, 36);
+
+      // new objects using the Services class
+      const webDev = new Services(001, "Web Development", 300.00, 10);
+      const cloud = new Services(002, "Cloud Computing Setup", 250.00, 40);
+      const infoTech = new Services(003, "IT Consulting", 500.00, 80);
+
+      // new objects using the Employee class
+      const susanHenry = new Employee(3308, "Susan", "Henry", 28.15);
+      const troyJacob = new Employee(3309, "Troy", "Jacob", 108.93);
+      const lanceWilson = new Employee(3310, "Lance", "Wilson", 55.55);
+      const halMartin = new Employee(3311, "Hal", "Martin", 12.01);
+      const missyJones = new Employee(3312, "Missy", "Jones", 43.17);
+
+      // captured elements to be manipulated throughout the application
+      const products = document.getElementById("products");
+      const services= document.getElementById("services");
+      const employees = document.getElementById("employees");
+      const select = document.getElementById("message");
+      const dropDown = document.getElementById("javazonList");
+      const productTable = document.getElementById("productTable");
+      const servicesTable = document.getElementById("servicesTable");
+      const employeeTable = document.getElementById("employeeTable");
+
+      /* 
+       * this function will iterate over an array of objects to aid
+       * in displaying information to a table utilizing similar
+       * object methods
+       */
+      function tableDisplay(productArray, divElement) {
+        productArray.forEach(element => {
+          element.tableDisplay(divElement);
+        });
+      }
+
+      // display object information to each respective table
+      tableDisplay([cookBook, game, plantStand, cards, paper], productTable);
+      tableDisplay([webDev, cloud, infoTech], servicesTable);
+      tableDisplay([susanHenry, troyJacob, lanceWilson, halMartin, missyJones],
+                    employeeTable);
+
+      // initial display for each div is set to 'none'
+      products.style.display = "none";
+      services.style.display = "none";
+      employees.style.display = "none";
+      select.style.display = "none";
+
+      // onclick event to trigger the arrow function
+      document.getElementById("btnDisplayListing").onclick = () => {
+        /* 
+         * based on the select value the switch statement will 
+         * display the appropriate div
+         */
+        switch(dropDown.value) {
+          case "products":
+            products.style.display = "block";
+            services.style.display = "none";
+            employees.style.display = "none";
+            select.style.display = "none";
+            break;
+          case "services":
+            products.style.display = "none";
+            services.style.display = "block";
+            employees.style.display = "none";
+            select.style.display = "none";
+            break;
+          case "employees":
+            products.style.display = "none";
+            services.style.display = "none";
+            employees.style.display = "block";
+            select.style.display = "none";
+            break;
+          case "select":
+            products.style.display = "none";
+            services.style.display = "none";
+            employees.style.display = "none";
+            select.style.display = "block";
+        }
+      }
+    </script>
+  </body>
+</html>
