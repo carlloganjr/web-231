@@ -1,0 +1,110 @@
+<!--
+    Title: Logan-alphabet-game.html
+    Author: Carl Logan
+    Date: 7/11/2022
+    Description: Assignment 8.2 - Alphabet Game  
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <link rel="stylesheet" type="text/css" href="../global.css">
+    <link rel="stylesheet" type="text/css" href="Logan-alphabet-game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="container">
+      <h1 class="app-header">Welcome to the Alphabet Game!</h1>
+      <!-- container to hold the form inputs -->
+      <div class="card">
+        <!-- Title for the card -->
+        <div class="card-title">
+          Alphabet Number Form
+        </div>
+        <!-- Content container for the card -->
+        <div class="card-content">
+          <!-- Container for the form -->
+         <div class="form">
+           <!-- Form field containing a text input to capture user values -->
+           <div class="form-field">
+             <label for="txtPosition">Alphabet Letter Position:</label>
+            <input type="number" id="txtPosition" name="txtPosition" class="input">
+           </div>
+           <!-- Form field containing a button to trigger an event -->
+           <div class="form-field">
+             <button class="btn btn-primary full-width" id="btnFindLetter">
+              Find Letter
+             </button>
+           </div>
+         </div>
+       </div>
+      </div>
+      <!-- This link will return to the course landing page -->
+      <a class="return-home" href="../index.html">Return</a>
+
+      <!-- This card will contain the Letters -->
+      <div class="card" id>
+        <div class="card-title">
+            Letters in the Alphabet
+        </div>
+        <div class="card-content" id="alphabet">
+          <!-- content will appear here -->
+        </div>
+      </div>
+
+      <!-- This card will contain the results for Letters -->
+      <div class="card">
+        <div class="card-title">
+            Results
+        </div>
+        <div class="card-content" id="result">
+          <!-- content will appear here -->
+        </div>
+      </div>
+
+    </div><!-- end container -->
+    
+    <script>
+      /*
+      Title: How To Generate an Alphabet JavaScript Array
+      Author: RayRay
+      Date: 1/28/2022
+      Description: https://betterprogramming.pub/how-to-generate-an-alphabet-javascript-array-eae6940ea646
+                   under Get the correct letter from the alphabet 
+      */
+      const alphabet = [...Array(26)].map((_, i) => String.fromCharCode(i + 97));
+      /* end attribution */
+
+      // iterate over the alphabet array to create a string
+      let alphabetOutput = "";
+      for (let i in alphabet) {
+        alphabetOutput += alphabet[i].toUpperCase() + ", ";
+      }
+
+      // display the alphabetOutput to the alphabet div
+      document.getElementById("alphabet").innerHTML = 
+      alphabetOutput.slice(0,-2);
+
+      // capture the result div for later use
+      const result = document.getElementById("result");
+
+      // onclick event to trigger the arrow function
+      document.getElementById("btnFindLetter").onclick = () => {
+        const pos = document.getElementById("txtPosition").value;
+        let letter = alphabet[pos-1];
+        
+        // determine which message to display based on the letter value
+        if(letter === undefined) {
+          result.innerHTML = `There are not ${pos} letters in the alphabet`;
+        }
+        else {
+          result.innerHTML = `${letter.toUpperCase()}
+                               is at position ${pos} in the alphabet`;
+        }
+      }
+
+    </script>
+  </body>
+</html>

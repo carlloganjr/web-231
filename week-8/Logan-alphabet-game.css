@@ -1,0 +1,29 @@
+/* 
+    Title: Logan-alphabet-game.css
+    Author: Carl Logan
+    Date: 7/11/2022
+    Description: CSS styling for Logan-alphabet-game.html.
+*/
+
+/* Center the header text */
+.app-header {
+  text-align: center;
+}
+
+/* Center the converted text and increase font size */
+#result, #alphabet {
+  text-align: center;
+  font-size: 28px;
+}
+
+/* control width and margin for the main container */
+#container {
+  width: 800px;
+  margin: auto;
+}
+
+/* margin control for typical containers */
+.card, .form {
+  margin: 3% auto 0;
+}
+
